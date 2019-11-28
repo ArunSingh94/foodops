@@ -50,47 +50,86 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <h1 class="mt-5">Profile</h1>
-        
+        <input hidden type="text" id="subid" value=<%=data.fk_sub_plan %> >
+        <input hidden type="text" id="newsub" value=''>
         <div class="container">
-            <h2>Account Information</h2>
-            <h2>Username: <%= usr %></h2>
-            <h2>Password: <%= psw %></h2>
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Account Information</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Email: <%= data.email %></td>
+                </tr>
+                <tr>
+                    <td>First name: <%= data.fname %></td>
+                </tr>
+                <tr>
+                    <td>Last name: <%= data.lname %></td>
+                </tr>
+                <tr>
+                    <td>Company: <%= data.company %></td>
+                </tr>
+                <tr>
+                    <td>Role: <%= data.role %></td>
+                </tr>
+                <tr>
+                    <td>Country: <%= data.country %></td>
+                </tr>
+                <tr>
+                    <td id="activeplan">Active subscription plan:</td>
+                </tr>
+              </tbody>
+            </table>
         </div>
         <br/>
         <div class="container">
-            <h2>List of Services</h2>
-            <ul class="list-group">
-              <li class="list-group-item">First item</li>
-              <li class="list-group-item">Second item</li>
-              <li class="list-group-item">Third item</li>
-            </ul>
-        </div>
-        <br/>
-        <div class="container">
-            <h2>Subscription Plans</h2>
-            <ul class="list-group">
-              <li class="list-group-item">First item</li>
-              <li class="list-group-item">Second item</li>
-              <li class="list-group-item">Third item</li>
-            </ul>
-        </div>
-        <br/>
-        <div class="container">
-            <h2>Scape up or down</h2>
-            <ul class="list-group">
-              <li class="list-group-item">First item</li>
-              <li class="list-group-item">Second item</li>
-              <li class="list-group-item">Third item</li>
-            </ul>
-        </div>
+            <h2>Change Subscription Plan</h2>
+            <select id=subplan name=subplan>
+                <option value="1">Small</option>
+                <option value="2">Medium</option>
+                <option value="3">Enterprise</option>
+            </select>
 
+            <div class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header" style='display: block;'>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Are you sure you want to change?</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p id='modalText'>&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id='saveSub'>Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <br/>
+        <div class="container">
+            <h2>Service History</h2>
+            <table id="historytable" class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                </tr>
+            </table>
+        </div>
+        <br/>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/jquery/jquery.slim.min.js"></script>
+  <script src="/jquery/jquery.min.js"></script>
   <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/profileHelper.js"></script>
 
 </body>
 
