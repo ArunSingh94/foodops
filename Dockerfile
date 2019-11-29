@@ -1,7 +1,7 @@
 FROM node:10
 
 #Create app directory
-WORKDIR /foodops
+WORKDIR /usr/src/foodops
 
 #Install app dependencies
 COPY package*.json ./
@@ -12,4 +12,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 8080
-CMD ["node","app.js","--host","0.0.0.0"]
+CMD ["npm","start","--host","0.0.0.0"]

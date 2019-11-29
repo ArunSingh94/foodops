@@ -1,19 +1,21 @@
 var express = require('express');
 var router = express.Router();
 var async = require('async');
+require('dotenv').config();
 var mysql = require('mysql');
+
 var connection = mysql.createConnection({
-  host: 'mydb.cnuipuiqebbi.us-east-1.rds.amazonaws.com',
-  user: 'root',
-  password: 'dangerzone1',
-  database: 'foodopsdb'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
 
 var uid = -1;
 
 connection.connect(function(err){
   if(err){
-    console.log('DB CONNECT ERR:',err);
+    console.log('DB CONNECT ERROR:',err);
     return;
   }
   else{

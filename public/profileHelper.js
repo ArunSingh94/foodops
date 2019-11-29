@@ -46,8 +46,16 @@ $(document).ready(function(){
         $.post("/change",{subid: newSub},function(res){
             console.log('Change response:',res);
             if(res == 'success'){
-                console.log('Sub change successful, reloading');
-                location.reload();
+                console.log('Sub change successful, redrawing table');
+                $("#historytable tbody").empty();
+                $.post("/history", function(res){
+                    console.log('History response:',res);
+                    $.each(res,function(i,item){
+                        var $tr = $('<tr>').append(
+                            $('<td>').text(item.servicename),
+                            $('<td>').text(item.date)).appendTo('#historytable');
+                    });
+                });
             }
             else{
                 console.log('Sub change failed');

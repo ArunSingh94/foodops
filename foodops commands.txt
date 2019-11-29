@@ -1,0 +1,7 @@
+docker -H tcp://54.156.67.249:2375 ps -a
+
+docker-compose -H tcp://54.156.67.249:2375 -f app.yml run --rm app node node_modules/db-migrate/bin/db-migrate up --config ./config/dev.json
+
+docker-compose -H tcp://54.156.67.249:2375 -f app.yml up -d
+
+docker-compose -H tcp://54.156.67.249:2375 -f app.yml ps
