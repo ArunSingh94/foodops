@@ -18,6 +18,12 @@ cd foodops
 ```
 npm install
 ```
+### Generate your own AWS key pair in the AWS console and replace the one in this folder
+### Change file permission of your key pair
+```
+chmod 400 <the name of your key pair>
+```
+### Replace the KeyName of the key pair in stack.yml with your key pair name
 ### Create the AWS Cloud Formation stack
 ```
 aws cloudformation create-stack --stack-name <stack name here>  --template-body file://$PWD/stack.yml
@@ -31,6 +37,7 @@ DB_NAME=foodopsdb
 DB_PASS=password123
 DB_HOST=<your RDS endpoint>
 ```
+### Replace the image in app.yml with your docker hub account name
 ### Build the Docker image
 ```
 docker build -t <your dockerhub account name>/foodops .
